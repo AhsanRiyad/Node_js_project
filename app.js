@@ -23,7 +23,7 @@ app.use('/assets/bootstrap/css', express.static('assets/bootstrap/css'));
 app.use('/assets/css', express.static('assets/css'));
 app.use('/assets/js', express.static('assets/js'));
 app.use('/assets/jquery', express.static('assets/jquery'));
-
+app.use('/assets/jquery-ui', express.static('assets/jquery-ui'));
 
 //ROUTES
 app.get('/' , (req,res)=>res.render('index'));

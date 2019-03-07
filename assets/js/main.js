@@ -1,1 +1,3 @@
-alert('hellow');
+$( function() {
+    $( "#datepicker" ).datepicker();
+  } );
