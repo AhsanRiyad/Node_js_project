@@ -10,7 +10,8 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "init": "^0.1.2"
+    "init": "^0.1.2",
+    "mysql": "^2.16.0"
   },
   "devDependencies": {},
   "scripts": {
