@@ -12,6 +12,20 @@ router.get('/' , function(req, res){
 });
 
 
+router.post('/' , function(req, res){
+	var user = {
+		uname: req.body.email,
+		password: req.body.password,
+		rememberme : req.body.rememberme
+	};
+
+
+	
+
+
+})
+
+
 router.get('/login' , function(req, res){
 	res.send('you are in login');
 });
