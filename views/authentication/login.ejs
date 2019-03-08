@@ -8,7 +8,23 @@
       <div class="col-12 col-xl-6 ">
         <div class="container">
           <div class="row py-4">
-            <p class="text-dark h4" id="login_id">Welcome to Umart! Please login</p>
+            
+              
+
+              <% if(validCheck == true)
+              { %>
+                <p class="text-dark h4" id="login_id">
+              Welcome to Umart! Please login
+              
+              <%
+              }else{
+               %>
+               <p class="text-danger h4 bg-white" id="login_id">
+              Email/Password Not Matched
+              <%
+              }%> 
+
+              </p>
           </div>
 
           <div class="row justify-content-xl-center bg-white py-5 mb-5">

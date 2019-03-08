@@ -4,7 +4,8 @@ var router = express.Router();
 var userModel = require.main.require('./model/userModel');
 
 var obj = {
-	title: 'login'
+	title: 'login',
+	validCheck: true
 }
 
 
@@ -20,7 +21,17 @@ router.post('/' , function(req, res){
 	};
 
 	userModel.validate(user , function(result){
+		if(result.length<1){
 		console.log(result);
+		obj.validCheck = false;
+		res.render('authentication/login' , obj);
+		}else{
+			console.log(result);
+		obj.validCheck = true;
+		res.render('authentication/login' , obj);
+		}
+
+
 
 	});
 	
