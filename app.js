@@ -26,13 +26,12 @@ app.use( authenticationArray , authentication);
 
 
 
-app.use('/assets/media', express.static('assets/media'));
-app.use('/assets/bootstrap/js', express.static('assets/bootstrap/js'));
-app.use('/assets/bootstrap/css', express.static('assets/bootstrap/css'));
-app.use('/assets/css', express.static('assets/css'));
-app.use('/assets/js', express.static('assets/js'));
-app.use('/assets/jquery', express.static('assets/jquery'));
-app.use('/assets/jquery-ui', express.static('assets/jquery-ui'));
+app.use('/lib/img', express.static('lib/img'));
+app.use('/lib/js', express.static('lib/js'));
+app.use('/lib/css', express.static('lib/css'));
+
+
+
 
 
 
