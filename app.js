@@ -12,6 +12,11 @@ var port = 3000;
 
 var authenticationArray = ['/logout', '/login', '/registration' , '/authentication' , '/auth'];
 
+
+var title = {
+	title: 'index'
+}
+
 //CONFIGURATION
 app.set('view engine' , 'ejs');
 
@@ -34,9 +39,8 @@ app.use('/lib/css', express.static('lib/css'));
 
 
 
-
 //ROUTES
-app.get('/' , (req,res)=>res.render('index'));
+app.get('/' , (req,res)=>res.render('index' , title));
 
 
 //SERVER STARTUP

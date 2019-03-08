@@ -1,3 +1,8 @@
+
+<%
+var logoSrc = "lib/img/logo.png";
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,3 +23,59 @@
 
 	
 <body>
+
+
+
+<div class="container-fluid bg-light">
+    <div class="row">
+      <div class="col">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2 col-12 justify-content-lg-start d-flex justify-content-center"><a href="index.php"><img src=<%=logoSrc%> ></a>
+            </div>
+
+            <div class="col-lg-6 col-12 align-self-lg-center">
+
+              <form action="search_result.php">
+                <div class="form-row align-items-center">
+                  <div class="col-9">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-search"></i></div>
+                      </div>
+                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search">
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                  </div>
+                </div>
+              </form> 
+            </div>
+            <div class="col-lg-1  col-3 offset-1 mt-3 mb-3 mb-lg-0 mt-lg-0 offset-lg-0 d-flex justify-content-center align-self-lg-center"><a href="" class="btn btn-success">Sign Up
+          </a> 
+        </div>
+
+          <div class=" col-lg-2 col-xl-1 col-3 mt-3 mb-3 mb-lg-0 mt-lg-0 d-flex justify-content-center align-self-lg-center"><a href="contact.php" class="btn btn-info">Need Help?</a></div>
+
+
+          <div class=" col-lg-1 col-3 mt-3 mb-3 mb-lg-0 mt-lg-0 d-flex justify-content-center align-self-lg-center">
+            <a href="" class="btn btn-danger">
+              Sign In
+             
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
