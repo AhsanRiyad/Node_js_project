@@ -1,6 +1,7 @@
 var express = require('express');
-
 var router = express.Router();
+
+var userModel = require.main.require('./model/userModel');
 
 var obj = {
 	title: 'login'
@@ -14,12 +15,14 @@ router.get('/' , function(req, res){
 
 router.post('/' , function(req, res){
 	var user = {
-		uname: req.body.email,
-		password: req.body.password,
-		rememberme : req.body.rememberme
+		email: req.body.email,
+		password: req.body.password
 	};
 
+	userModel.validate(user , function(result){
+		console.log(result);
 
+	});
 	
 
 

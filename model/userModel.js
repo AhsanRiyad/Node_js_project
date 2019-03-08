@@ -1,13 +1,12 @@
-var db_connection = require.main.require('./model/db_connection');
+var db = require('./db');
 
+module.exports={	
+	validate: function(user, callback){
+		var sql = "select * from g_user where g_u_email='"+user.email+"' and g_u_password='"+user.password+"' ";
 
-module.exports = {
-	validate: function(user , callback){
-		var sql = "select * from g_user where g_u_id=? and g_u_password=? ";
-
-		db.getResult(sql, [user]);
-
-
-
-	}
+		db.getResult(sql , callback);
+	},
 }
+
+
+
