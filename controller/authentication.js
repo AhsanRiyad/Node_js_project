@@ -8,6 +8,8 @@ var obj = {
 	validCheck: true
 }
 
+var reg = ['/reg' , '/registration' , '/signup']
+
 
 router.get('/' , function(req, res){
 	res.render('authentication/login' , obj);
@@ -39,19 +41,13 @@ router.post('/' , function(req, res){
 
 })
 
-
-router.get('/login' , function(req, res){
-	res.send('you are in login');
+router.get( '/reg' , function(req, res){
+	res.render('authentication/registration' , obj);
 });
 
+router.get('/rr' , function(req, res){
+	res.render('authentication/a1' , obj)
+})
 
-router.get('/registration' , function(req, res){
-	res.send('you are in login');
-});
-
-
-router.get('/logout' , function(req, res){
-	res.send('you are logged out');
-});
 
 module.exports = router;

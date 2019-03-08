@@ -30,10 +30,9 @@ app.use(cookieParser());
 app.use( authenticationArray , authentication);
 
 
-
-app.use('/lib/img', express.static('lib/img'));
-app.use('/lib/js', express.static('lib/js'));
-app.use('/lib/css', express.static('lib/css'));
+app.use('/lib/img', express.static(__dirname + '/lib/img'));
+app.use('/lib/js', express.static( __dirname + '/lib/js'));
+app.use('/lib/css', express.static( __dirname + '/lib/css'));
 
 
 
