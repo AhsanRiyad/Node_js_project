@@ -30,7 +30,8 @@ router.post('/' , function(req, res){
 		}else{
 			console.log(result);
 		obj.validCheck = true;
-		res.render('authentication/login' , obj);
+		console.log('redirecting to dashboard');
+		res.redirect('/dashboard');
 		}
 
 
