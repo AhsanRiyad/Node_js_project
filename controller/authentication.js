@@ -8,7 +8,7 @@ var obj = {
 	validCheck: true
 }
 
-var reg = ['/reg' , '/registration' , '/signup']
+var reg = ['/reg']
 
 
 router.get('/' , function(req, res){

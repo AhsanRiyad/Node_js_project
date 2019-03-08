@@ -10,7 +10,7 @@ var authentication = require.main.require('./controller/authentication');
 var app = express();
 var port = 3000;
 
-var authenticationArray = ['/logout', '/login', '/registration' , '/authentication' , '/auth'];
+var authenticationArray = ['/auth'];
 
 
 var title = {
@@ -30,9 +30,9 @@ app.use(cookieParser());
 app.use( authenticationArray , authentication);
 
 
-app.use('/lib/img', express.static(__dirname + '/lib/img'));
-app.use('/lib/js', express.static( __dirname + '/lib/js'));
-app.use('/lib/css', express.static( __dirname + '/lib/css'));
+app.use('/lib/img', express.static(__dirname + '/lib/img/'));
+app.use('/lib/js', express.static( __dirname + '/lib/js/'));
+app.use('/lib/css', express.static( __dirname + '/lib/css/'));
 
 
 
