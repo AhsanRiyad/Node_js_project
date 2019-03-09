@@ -15,5 +15,14 @@ router.get('/' , function(req, res){
 })
 
 
+router.get('/profile' , function(req, res){
+	res.render('dashboard/profile' , obj);
+});
+
+
+router.get('/updateprofile' , function(req, res){
+	res.render('dashboard/updateprofile' , obj);
+});
+
 
 module.exports = router;
