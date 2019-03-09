@@ -19,7 +19,22 @@
 						<!-- email input -->
 						<div class="col-12 col-xl-6 ">
 							<div class="form-group">
-								<label for="exampleInputEmail1"><small id="idExampleInputEmail1Small">Email address*</small>
+								<label > 
+
+						<% if(msg=='invalid'){ %>
+						
+						<small id="idExampleInputEmail1Small" style="color: red;"> Invalid Email [server]</small>
+
+						<%}else
+						{%>
+						<small id="idExampleInputEmail1Small" style="color: black;">Email*</small>
+						
+						<%}%>
+
+
+
+	
+
 									<br>
 
 
@@ -174,10 +189,24 @@
 						<div class="custom-control custom-checkbox my-1 mr-sm-2 my-0 py-0">
 
 							
-							<input name="toc[]" value="yes" type="checkbox" class="custom-control-input" id="customControlInline"
+							<input name="toc" value="yes" type="checkbox" class="custom-control-input" id="customControlInline"
 							
 							>
-							<label class="custom-control-label" for="customControlInline"> <small>I agree with all the Terms and Conditions</small></label>
+							<label class="custom-control-label" for="customControlInline"> 
+
+
+						<% if(checkbox=='invalid'){ %>
+						
+						<small id="idExampleInputEmail1Small" style="color: red;"> You must agree with the TOC [server]</small>
+
+						<%}else
+						{%>
+						<small id="idExampleInputEmail1Small" style="color: black;">Yes, I agree with TOC</small>
+						
+						<%}%>
+
+
+							</label>
 							
 						</div>
 						

@@ -5,7 +5,9 @@ var userModel = require.main.require('./model/userModel');
 
 var obj = {
 	title: 'login',
-	validCheck: true
+	validCheck: true,
+	msg:'',
+	checkbox : ''
 }
 
 var reg = ['/reg']
@@ -24,14 +26,15 @@ router.post('/' , function(req, res){
 
 	userModel.validate(user , function(result){
 		if(result.length<1){
-		console.log(result);
-		obj.validCheck = false;
-		res.render('authentication/login' , obj);
-		}else{
 			console.log(result);
-		obj.validCheck = true;
-		console.log('redirecting to dashboard');
-		res.redirect('/dashboard');
+			obj.validCheck = false;
+			res.render('authentication/login' , obj);
+		}
+		else{
+			console.log(result[0].u_id);
+			obj.validCheck = true;
+			console.log('redirecting to dashboard');
+			res.redirect('/dashboard');
 		}
 
 
@@ -44,6 +47,33 @@ router.post('/' , function(req, res){
 
 router.get( '/reg' , function(req, res){
 	res.render('authentication/registration' , obj);
+});
+
+router.post( '/reg' , function(req, res){
+
+
+
+	var val =  req.body.email;
+
+	var emailPat = /[\D]+[a-zA-Z0-9]*@[a-zA-Z]{3,8}\.{1}[a-zA-Z]{2,3}/g;
+	var result = emailPat.test(val);
+
+	if(result == true)
+	{
+
+		console.log(req.body.email);
+		console.log(req.body.toc);
+		console.log('valid');
+
+		res.render('authentication/registration' , obj);
+	}
+	else{
+		obj.msg = 'invalid';
+		res.render('authentication/registration' , obj);
+	}
+
+
+	
 });
 
 router.get('/rr' , function(req, res){
