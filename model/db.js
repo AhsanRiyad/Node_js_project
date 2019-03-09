@@ -66,7 +66,7 @@ module.exports = {
 			}
 		});
 
-		/*connection.query('SET @test = 1; call pp(@test, 123); SELECT @test as inout_i' , function(err, status){
+		connection.query('call REG("ff","ff","ff","ff","ff")' , function(err, status){
 			if(err){
 				callback(false);
 			}else{
@@ -75,12 +75,12 @@ module.exports = {
 				//console.log(o);
 				//console.log(status[0].u_id);
 				//console.log(status[2]);
-				console.log(status[2][0].inout_i);
+				//console.log(status[2][0].inout_i);
 		
 				callback(status);
 			}
 		});
-*/
+
 
 		connection.end(function(error){
 			console.log('connection ending ...');
