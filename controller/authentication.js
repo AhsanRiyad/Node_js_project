@@ -46,6 +46,9 @@ router.post('/' , function(req, res){
 })
 
 router.get( '/reg' , function(req, res){
+	obj.nullVal = false;
+	obj.checkbox = '';
+	obj.msg = 'valid';
 	res.render('authentication/registration' , obj);
 });
 
@@ -58,17 +61,49 @@ router.post( '/reg' , function(req, res){
 	var emailPat = /[\D]+[a-zA-Z0-9]*@[a-zA-Z]{3,8}\.{1}[a-zA-Z]{2,3}/g;
 	var result = emailPat.test(val);
 
-	if(result == true)
+	if(result == false)
 	{
-
+		obj.msg = 'invalid';
 		console.log(req.body.email);
 		console.log(req.body.toc);
-		console.log('valid');
-
+		console.log('email box');
 		res.render('authentication/registration' , obj);
 	}
+	else if(req.body.toc!='yes'){
+		obj.checkbox = 'invalid';
+		console.log('toc');
+		res.render('authentication/registration' , obj);
+	}
+	else if(req.body.email!='' && req.body.password!='' && req.body.first_name!='' && req.body.last_name!='' && req.body.phone!=''){
+		
+		var user = 
+		{
+		email : req.body.email,
+		password : req.body.password,
+		month  : req.body.month,
+		day  : req.body.day,
+		year  : req.body.year,
+		gender  : req.body.gender,
+		first_name  : req.body.first_name,
+		last_name  : req.body.last_name,
+		phone : req.body.phone
+		}
+		
+		userModel.registration(user, function(status){
+			if(!status){
+				console.log('reg error');
+			}
+		});
+
+		//obj.msg = 'invalid';
+		//res.redirect('authentication/registration' , obj);
+
+
+	}
 	else{
-		obj.msg = 'invalid';
+		console.log(req.body);
+		obj.nullVal = true;
+		console.log('null block');
 		res.render('authentication/registration' , obj);
 	}
 

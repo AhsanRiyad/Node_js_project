@@ -34,7 +34,24 @@ module.exports = {
 			console.log('connection ending ...');
 				//console.log('connection ending ...');
 			});
+	},
+
+	execute: function(sql , callback){
+		var connection = getConnection();
+		console.log(sql);
+		connection.query(sql , function(err, status){
+			if(err){
+				callback(false);
+			}else{
+				callback(status);
+			}
+		});
+		connection.end(function(error){
+			console.log('connection ending ...');
+				//console.log('connection ending ...');
+			});
 	}
+
 
 
 }
