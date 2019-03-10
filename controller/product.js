@@ -9,12 +9,15 @@ var obj = {
 }
 
 
-router.get('/add' , function(req, res){
-	res.render('product/add_product' , obj);
+router.get('/addpromo' , function(req, res){
+	res.render('product/addpromo' , obj);
 });
 
-router.post('/add' , function(req, res){
-	res.render('product/add_product' , obj);
+router.post('/addpromo' , function(req, res){
+
+
+
+	res.render('product/addpromo' , obj);
 });
 
 
