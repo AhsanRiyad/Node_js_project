@@ -33,6 +33,10 @@ module.exports={
 		db.execute(sql , callback);
 
 		console.log(sql);
+	},
+	getAllProduct: function(callback){
+		sql = "select * from products";
+		db.getResult(sql , callback);
 	}
 }
 

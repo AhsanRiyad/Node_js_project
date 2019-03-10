@@ -5,7 +5,7 @@ var exSession = require('express-session');
 var cookieParser = require('cookie-parser');
 var dashboard = require.main.require('./controller/dashboard');
 var product = require.main.require('./controller/product');
-
+var productModel = require.main.require('./model/productModel');
 var authentication = require.main.require('./controller/authentication');
 
 var app = express();
@@ -15,7 +15,8 @@ var authenticationArray = ['/auth'];
 
 
 var title = {
-	title: 'index'
+	title: 'index', 
+	justInProduct: []
 }
 
 //CONFIGURATION
@@ -41,7 +42,20 @@ app.use('/lib/css', express.static( __dirname + '/lib/css/'));
 
 
 //ROUTES
-app.get('/' , (req,res)=>res.render('index' , title));
+app.get('/' , (req,res)=>{
+
+
+	productModel.getAllProduct(function(result){
+		title.justInProduct = result;
+		console.log(result);
+		//res.render('index' , title);
+	});
+
+
+	
+
+}
+);
 
 
 //SERVER STARTUP
