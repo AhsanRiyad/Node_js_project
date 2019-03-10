@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var exSession = require('express-session');
 var cookieParser = require('cookie-parser');
 var dashboard = require.main.require('./controller/dashboard');
+var product = require.main.require('./controller/product');
 
 var authentication = require.main.require('./controller/authentication');
 
@@ -29,6 +30,7 @@ app.use(cookieParser());
 
 app.use( authenticationArray , authentication);
 app.use('/dashboard' , dashboard);
+app.use('/product' , product);
 
 app.use('/lib/img', express.static(__dirname + '/lib/img/'));
 app.use('/lib/js', express.static( __dirname + '/lib/js/'));

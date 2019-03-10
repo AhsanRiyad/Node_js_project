@@ -6,7 +6,7 @@ var userModel = require.main.require('./model/userModel');
 var obj = {
 	title: 'login',
 	validCheck: true,
-	msg:'',
+	msg:'Welcome, Create your Umart Account',
 	checkbox : '',
 	regSuceess: 'other',
 	nullVal : false
@@ -51,7 +51,7 @@ router.post('/' , function(req, res){
 router.get( '/reg' , function(req, res){
 	obj.nullVal = false;
 	obj.checkbox = '';
-	obj.msg = 'valid';
+	obj.msg = 'Welcome, Create your Umart Account';
 	obj.regSuceess = 'other';
 	res.render('authentication/registration' , obj);
 });
@@ -59,7 +59,7 @@ router.get( '/reg' , function(req, res){
 router.post( '/reg' , function(req, res){
 
 	obj.regSuceess = 'other';
-	obj.msg = 'valid';
+	obj.msg = 'Welcome, Create your Umart Account';
 	var val =  req.body.email;
 
 	var emailPat = /[\D]+[a-zA-Z0-9]*@[a-zA-Z]{3,8}\.{1}[a-zA-Z]{2,3}/g;
@@ -95,11 +95,12 @@ router.post( '/reg' , function(req, res){
 		
 		userModel.registration(user, function(status){
 			if(!status){
-			obj.regSuceess = false;
+			obj.msg = 'email already registered';
 			console.log('reg error');
 			res.render('authentication/registration' , obj);
 			}
 			else{
+				obj.msg = 'success';
 				obj.regSuceess = true;
 				res.render('authentication/registration' , obj);
 
@@ -113,7 +114,7 @@ router.post( '/reg' , function(req, res){
 	}
 	else{
 		console.log(req.body);
-		obj.nullVal = true;
+		obj.msg = 'null value';
 		console.log('null block');
 		res.render('authentication/registration' , obj);
 	}

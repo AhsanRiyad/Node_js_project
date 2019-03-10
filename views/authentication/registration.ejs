@@ -10,27 +10,93 @@
 					<div class="row pt-4 pb-1">
 
 
-						<% if(nullVal==true){ %>
+						<%
+						if(msg=='Welcome, Create your Umart Account'){
+						%>
 						
-						<p class="text-danger h4 " id='msg' > Null value detected [server]</p>
-
-						<%}
-						else if(regSuceess==true)
-						{%>
 						<p class="text-success  h4" id='msg'>
-							Reg Successful
-						</p>						
-						<%}
-						else if(regSuceess==false){%>
+							Welcome, Create your Umart Account
+						</p>		
 
-						<p class="text-danger h4" id='msg'>
-							Account Already Exists
-						</p>
+						<%}%>
 
+						<%
+						if(msg=='Invalid email [server]'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							'Invalid email [server]'
+						</p>		
 
 						<%}%>
 
 
+						<%
+						if(msg=='invalid'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							'Invalid email [server]'
+						</p>		
+
+						<%}%>
+
+
+						<%
+						if(msg=='Invalid'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							'Invalid email [server]'
+						</p>		
+
+						<%}%>
+
+
+						<%
+						if(msg=='email already registered'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							Email already used
+						</p>		
+
+						<%}%>
+
+
+
+						<%
+						if(msg=='success'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							Reg successful
+						</p>		
+
+						<%}%>
+
+
+
+						<%
+						if(msg=='success'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							Reg successful
+						</p>		
+
+						<%}%>
+
+						
+						<%
+						if(msg=='null value'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							Null value detected
+						</p>		
+
+						<%}%>
 
 						
 						<span class="ml-auto mt-auto pt-3"><small >Alredy member? <a href="">Login</a> here</small></span>
