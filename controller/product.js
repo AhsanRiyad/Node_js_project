@@ -90,6 +90,54 @@ router.post('/deletepromo' , function(req, res){
 
 });
 
+router.get('/updatepromo/:promoid' , function(req, res){
+	
 
+	var promoid = req.params.promoid;
+	console.log(promoid);
+	obj.promoid = promoid;
+	res.render('product/updatepromo' , obj);
+
+});
+
+
+router.post('/updatepromo/:promoid' , function(req, res){
+	obj.msg='';
+	var promoid = req.params.promoid;
+	console.log(promoid);
+	obj.promoid = promoid;
+	if(req.body.promo_desc == '' || req.body.promo_percentage == '' || req.body.promo_status == '' || req.body.promo_limit == '' || req.body.promot_use_count == '')
+	{
+		obj.msg = 'null';
+		res.render('product/updatepromo' , obj);
+	}
+	else{
+		
+
+		var promo = {
+			promo_desc: req.body.promo_desc,
+			promo_percentage : req.body.promo_percentage,
+			promo_status: req.body.promo_status,
+			promo_limit: req.body.promo_limit,
+			promo_use_count: req.body.promo_use_count,
+			promo_id: promoid
+		}
+
+		productModel.updatePromo(promo , function(status){
+			if(status){
+				obj.msg = 'added';
+				res.render('product/updatepromo' , obj);
+			}
+			else{
+				obj.msg = 'db';
+				res.render('product/updatepromo' , obj);
+			}
+		} );
+
+	}
+
+
+	
+});
 
 module.exports = router;

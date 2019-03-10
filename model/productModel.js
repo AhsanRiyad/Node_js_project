@@ -27,6 +27,12 @@ module.exports={
 
 		db.execute(sql, callback);
 
+	},
+	updatePromo: function(promo , callback){
+		sql = "UPDATE `promo` SET `promo_desc`='"+promo.promo_desc+"',`promo_percentage`="+promo.promo_percentage+" ,`promo_status`='"+promo.promo_status+"',`promo_limit`="+promo.promo_limit+",`promo_use_count`="+promo.promo_use_count+" WHERE promo_id = "+promo.promo_id+"";
+		db.execute(sql , callback);
+
+		console.log(sql);
 	}
 }
 

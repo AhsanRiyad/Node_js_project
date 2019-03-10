@@ -177,3 +177,24 @@ INSERT INTO `promo`(`promo_desc`, `Promo_expiry`, `promo_percentage`, `promo_sta
 
 
 INSERT INTO `promo`(`promo_desc`, `Promo_expiry`, `promo_percentage`, `promo_status`, `promo_limit`, `promot_use_count`) VALUES ()
+
+
+
+productModel.updatePromo(promoid , function(status){
+
+
+	});
+
+
+
+
+	productModel.updatePromo(promo , function(status){
+			if(status){
+				obj.msg = 'added';
+				res.render('product/updatepromo' , obj);
+			}
+			else{
+				obj.msg = 'db';
+				res.render('product/updatepromo' , obj);
+			}
+		} );
