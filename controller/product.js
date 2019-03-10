@@ -7,6 +7,7 @@ var router = express.Router();
 var obj = {
 	title: 'add product' ,
 	msg: '',
+	promoArray: ['far' , 'faerf']
 }
 
 
@@ -56,13 +57,38 @@ router.post('/addpromo' , function(req, res){
 router.get('/viewpromo' , function(req, res){
 	productModel.getPromo(function(result){
 		console.log('view promo section');
+		console.log(result.length);
+		obj.promoArray = result;
+		console.log(obj.promoArray);
 		res.render('product/viewpromo' , obj);
 	});
+
+
+
 
 	
 });
 
 
+router.post('/deletepromo' , function(req, res){
+	console.log('delete promo');
+	
+	var promoid = req.body.promoIdDelete;
+
+	productModel.deletePromo(promoid , function(status){
+		
+		productModel.getPromo(function(result){
+		console.log('view promo section');
+		console.log(result.length);
+		obj.promoArray = result;
+		console.log(obj.promoArray);
+		res.render('product/viewpromo' , obj);
+	});
+
+	})
+
+
+});
 
 
 

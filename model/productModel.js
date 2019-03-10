@@ -19,6 +19,14 @@ module.exports={
 	console.log(sql);
 	db.getResult(sql, callback);
 
+	},
+	deletePromo: function(promoid , callback){
+		var sql = "DELETE FROM `promo` WHERE promo_id="+promoid+"";
+		
+		console.log(sql);
+
+		db.execute(sql, callback);
+
 	}
 }
 
