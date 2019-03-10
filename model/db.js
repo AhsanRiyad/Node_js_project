@@ -53,7 +53,7 @@ module.exports = {
 		});
 
 
-		var x =  "DROP PROCEDURE IF EXISTS REG; CREATE PROCEDURE REG(IN EMAIL VARCHAR(25) , IN PASSWORD VARCHAR(25) , IN FIRST_NAME VARCHAR(25) , IN LAST_NAME VARCHAR(25) , IN PHONE VARCHAR(25), IN TYPE VARCHAR(25), IN STATUS VARCHAR(25) ) BEGIN DECLARE X INT;  SELECT * FROM USER; INSERT  INTO 'USER' ('U_EMAIL', 'U_PASSWORD' , 'U_MOBILE' , 'U_STATUS' , 'U_TYPE')VALUES(EMAIL , PASSWORD , PHONE ,  STATUS , TYPE); SELECT MAX(U_ID) INTO X FROM USER; INSERT INTO 'g_user_name'('g_u_id', 'u_type', 'first_name', 'last_name') VALUES (X , TYPE, FIRST_NAME,LAST_NAME); END;"
+		var x =  "CREATE OR REPLACE PROCEDURE REG(IN EMAIL VARCHAR(25) , IN PASSWORD VARCHAR(25) , IN FIRST_NAME VARCHAR(25), IN LAST_NAME VARCHAR(25) , IN PHONE INT, IN TYPE VARCHAR(25), IN STATUS VARCHAR(25) )BEGIN DECLARE X INT;SELECT * FROM USER; SELECT MAX(U_ID) INTO X FROM USER; SELECT FIRST_NAME;INSERT INTO `user`( `u_password`, `u_mobile`, `u_email` ,  `u_status`, `u_type`) VALUES ( PASSWORD , PHONE , EMAIL , STATUS ,  TYPE );SELECT MAX(U_ID) INTO X FROM USER; INSERT INTO `g_user_name`(`g_u_id`, `u_type`, `first_name`, `last_name`) VALUES ( X , TYPE , FIRST_NAME , LAST_NAME  );END;";
 
 	   console.log(x);
 
@@ -72,7 +72,7 @@ module.exports = {
 			}
 		});
 
-		connection.query('call REG("ff","ff","ff","ff","ff")' , function(err, status){
+		connection.query('call REG("ff","ff","ff","ff","ff" , "F" , "F")' , function(err, status){
 			if(err){
 				callback(false);
 			}else{
@@ -82,7 +82,7 @@ module.exports = {
 				//console.log(status[0].u_id);
 				//console.log(status[2]);
 				//console.log(status[2][0].inout_i);
-		
+				console.log(status);
 				callback(status);
 			}
 		});
