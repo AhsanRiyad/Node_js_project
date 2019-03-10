@@ -48,7 +48,7 @@ app.get('/' , (req,res)=>{
 	productModel.getAllProduct(function(result){
 		title.justInProduct = result;
 		console.log(result);
-		//res.render('index' , title);
+		res.render('index' , title);
 	});
 
 

@@ -106,12 +106,12 @@
 							<img class="img-fluid" src="lib/img/cat1.jpg" alt="">
 
 							<div class="w-100 pl-2">
-								<h6>Mobile phones</h6>
-								<h6 class="text-danger">$2490</h6>
+								<h6> <%=justInProduct[i].product_name%> </h6>
+								<h6 class="text-danger">$<%=justInProduct[i].product_price%></h6>
 								<p class="text-danger mb-0"> 
-									<strike class="text-muted">$5000
+									<strike class="text-muted">$<%=justInProduct[i].product_original_price%>
 									</strike>
-									<small class="text-muted"> 39%</small>
+									<small class="text-muted"> $<%=justInProduct[i].category_id%>%</small>
 								</p>
 								<div class="w-100 mt-0 pb-3">
 									
