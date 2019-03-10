@@ -71,8 +71,8 @@ module.exports = {
 				callback(status);
 			}
 		});
-
-		connection.query('call REG("ff","ff","ff","ff","ff" , "F" , "F")' , function(err, status){
+		var r = 'riyad' ; 
+		connection.query('call REG("'+r+'","ff","ff","ff","ff" , "F" , "F")' , function(err, status){
 			if(err){
 				callback(false);
 			}else{
