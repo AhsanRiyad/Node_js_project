@@ -7,7 +7,8 @@ var obj = {
 	title: 'login',
 	validCheck: true,
 	msg:'',
-	checkbox : ''
+	checkbox : '',
+	regSuceess: false
 }
 
 var reg = ['/reg']
@@ -91,7 +92,13 @@ router.post( '/reg' , function(req, res){
 		
 		userModel.registration(user, function(status){
 			if(!status){
-				console.log('reg error');
+			obj.regSuceess = false;
+			console.log('reg error');
+			}
+			else{
+				obj.regSuceess = true;
+				res.render('authentication/registration' , obj);
+
 			}
 		});
 

@@ -131,3 +131,25 @@ pool.getConnection(function(err, conn) {
     console.log(rows);
   });
 });
+
+
+
+CREATE OR REPLACE PROCEDURE REG(IN EMAIL VARCHAR(25) , IN PASSWORD VARCHAR(25) , IN FIRST_NAME VARCHAR(25), IN LAST_NAME VARCHAR(25) , IN PHONE INT, IN TYPE VARCHAR(25), IN STATUS VARCHAR(25) )BEGIN DECLARE X INT;  INSERT INTO `user`( `u_password`, `u_mobile`, `u_email` ,  `u_status`, `u_type`) VALUES ( PASSWORD , PHONE , EMAIL , STATUS ,  TYPE );SELECT MAX(U_ID) INTO X FROM USER; INSERT INTO `g_user_name`(`g_u_id`, `u_type`, `first_name`, `last_name`) VALUES ( X , TYPE , FIRST_NAME , LAST_NAME  );END;
+
+
+
+
+connection.query(x , function(err, status){
+			if(err){
+				callback(false);
+			}else{
+				 
+				//var o = JSON.parse(status[0]);
+				//console.log(o);
+				//console.log(status[0].u_id);
+				//console.log(status);
+
+
+				//callback(status);
+			}
+		});
