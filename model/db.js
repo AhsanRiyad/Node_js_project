@@ -43,16 +43,25 @@ module.exports = {
 
 	execute: function(sql , callback){
 		var connection = getConnection();
-		console.log(sql);
 		connection.query(sql , function(err, status){
 			if(err){
+				console.log('promo error block');
 				console.log(err);
 				callback(false);
 			}else{
-				console.log(status);
-				callback(status);
+				console.log('promo block');
+
+				console.log(status.protocol41);
+				callback(status.protocol41);
 			}
 		});
+
+
+
+		connection.end(function(error){
+			console.log('connection ending ...');
+				//console.log('connection ending ...');
+			});
 
 
 

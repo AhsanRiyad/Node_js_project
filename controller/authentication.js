@@ -14,6 +14,13 @@ var obj = {
 
 var reg = ['/reg']
 
+router.get('/logout' , function(req, res){
+	req.body.email = null;
+	res.render('authentication/login' , obj);
+});
+
+
+
 
 router.get('/' , function(req, res){
 	obj.msg = 'Welcome, Create your Umart Account';
@@ -34,6 +41,8 @@ router.post('/' , function(req, res){
 			res.render('authentication/login' , obj);
 		}
 		else{
+
+			req.session.email = req.body.email;
 			console.log(result[0].u_id);
 			obj.validCheck = true;
 			console.log('redirecting to dashboard');

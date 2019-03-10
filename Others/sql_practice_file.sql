@@ -153,3 +153,27 @@ connection.query(x , function(err, status){
 				//callback(status);
 			}
 		});
+
+
+
+
+
+INSERT INTO `user`(`u_id`, `u_password`, `u_address`, `u_email`, `u_mobile`, `dob`, `u_status`, `u_type`, `first_name`, `last_name`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10])
+
+
+
+
+
+
+INSERT INTO `products`(`product_id`, `product_name`, `product_price`, `product_avlble`, `product_sell_price`, `product_original_price`, `category_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])
+
+
+
+INSERT INTO `promo`(`promo_desc`, `Promo_expiry`, `promo_percentage`, `promo_status`, `promo_limit`, `promot_use_count`, `a_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8])
+
+
+
+
+
+
+INSERT INTO `promo`(`promo_desc`, `Promo_expiry`, `promo_percentage`, `promo_status`, `promo_limit`, `promot_use_count`) VALUES ()
