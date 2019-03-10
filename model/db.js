@@ -27,11 +27,12 @@ function getConnection(){
 module.exports = {
 	getResult: function(sql , callback){
 		var connection = getConnection();
-		console.log(sql);
+		
 		connection.query(sql , function(err, result){
 			if(err){
 				callback([]);
 			}else{
+
 				callback(result);
 			}
 		});

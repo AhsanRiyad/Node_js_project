@@ -54,7 +54,12 @@ router.post('/addpromo' , function(req, res){
 
 
 router.get('/viewpromo' , function(req, res){
-	res.render('product/viewpromo' , obj);
+	productModel.getPromo(function(result){
+		console.log('view promo section');
+		res.render('product/viewpromo' , obj);
+	});
+
+	
 });
 
 

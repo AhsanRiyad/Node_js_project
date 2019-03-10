@@ -13,6 +13,12 @@ module.exports={
 
 
 
+	},
+	getPromo: function(callback){
+	var sql = "select * from promo";
+	console.log(sql);
+	db.getResult(sql, callback);
+
 	}
 }
 
