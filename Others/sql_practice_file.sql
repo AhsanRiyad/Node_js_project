@@ -73,3 +73,61 @@ CREATE OR REPLACE PROCEDURE REG(IN EMAIL VARCHAR(25) , IN PASSWORD VARCHAR(25) ,
  INSERT INTO USER VALUES(100 ,  'AFA' , 'FARF' , 'FRAEF');
  
  END$$
+
+
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE REG(IN EMAIL VARCHAR(25) , IN PASSWORD VARCHAR(25) , IN FIRST_NAME VARCHAR(25), IN LAST_NAME VARCHAR(25) , IN PHONE INT, IN TYPE VARCHAR(25), IN STATUS VARCHAR(25) )
+ BEGIN 
+ DECLARE X INT;
+SELECT * FROM USER; 
+SELECT MAX(U_ID) INTO X FROM USER; 
+ 
+ END$$
+
+
+
+#SUCCESS
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE REG(IN EMAIL VARCHAR(25) , IN PASSWORD VARCHAR(25) , IN FIRST_NAME VARCHAR(25), IN LAST_NAME VARCHAR(25) , IN PHONE INT, IN TYPE VARCHAR(25), IN STATUS VARCHAR(25) )
+ BEGIN 
+ DECLARE X INT;
+SELECT * FROM USER; 
+SELECT MAX(U_ID) INTO X FROM USER; 
+SELECT FIRST_NAME;
+INSERT INTO `user`( `u_password`, `u_mobile`, `u_email` ,  `u_status`, `u_type`) VALUES ( PASSWORD , PHONE , EMAIL , STATUS ,  TYPE );
+SELECT MAX(U_ID) INTO X FROM USER; 
+INSERT INTO `g_user_name`(`g_u_id`, `u_type`, `first_name`, `last_name`) VALUES ( X , TYPE , FIRST_NAME , LAST_NAME  );
+END$$
+
+
+"CREATE OR REPLACE PROCEDURE REG(IN EMAIL VARCHAR(25) , IN PASSWORD VARCHAR(25) , IN FIRST_NAME VARCHAR(25), IN LAST_NAME VARCHAR(25) , IN PHONE INT, IN TYPE VARCHAR(25), IN STATUS VARCHAR(25) )
+ BEGIN 
+ DECLARE X INT;
+SELECT * FROM USER; 
+SELECT MAX(U_ID) INTO X FROM USER; 
+SELECT FIRST_NAME;
+INSERT INTO `user`( `u_password`, `u_mobile`, `u_email` ,  `u_status`, `u_type`) VALUES ( PASSWORD , PHONE , EMAIL , STATUS ,  TYPE );
+SELECT MAX(U_ID) INTO X FROM USER; 
+INSERT INTO `g_user_name`(`g_u_id`, `u_type`, `first_name`, `last_name`) VALUES ( X , TYPE , FIRST_NAME , LAST_NAME  );
+END;"
+
+
+
+
+
+var mysql = require('mysql');
+var opts = {
+  	host: '127.0.0.1' , 
+	user: 'root' , 
+	password: '',
+	database: 'ff',
+	multipleStatements: true
+};
+
+var pool = mysql.createPool(opts);
+pool.getConnection(function(err, conn) {
+  conn.query('DROP PROCEDURE IF EXISTS pp; CREATE PROCEDURE pp(INOUT i INT, IN j INT) BEGIN SET i = 10+j; END;');
+  conn.query('SET @test = 1; call pp(@test, 123); SELECT @test as inout_i', function(err, rows) {
+    console.log(rows);
+  });
+});
