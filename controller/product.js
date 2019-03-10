@@ -12,6 +12,11 @@ var obj = {
 
 
 
+router.get('/productdetails/:id' , function(req, res){
+	res.render('product/productdetails' , obj);
+});
+
+
 
 router.get('/addpromo' , function(req, res){
 	res.render('product/addpromo' , obj);
