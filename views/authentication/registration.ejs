@@ -15,16 +15,16 @@
 						<p class="text-danger h4 " id='msg' > Null value detected [server]</p>
 
 						<%}
-						else if(regSuceess)
+						else if(regSuceess==true)
 						{%>
 						<p class="text-success  h4" id='msg'>
 							Reg Successful
 						</p>						
 						<%}
-						else {%>
+						else if(regSuceess==false){%>
 
-						<p class="text-dark h4" id='msg'>
-							Create Your Umart Account
+						<p class="text-danger h4" id='msg'>
+							Account Already Exists
 						</p>
 
 

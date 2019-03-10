@@ -8,13 +8,15 @@ var obj = {
 	validCheck: true,
 	msg:'',
 	checkbox : '',
-	regSuceess: false
+	regSuceess: 'other',
+	nullVal : false
 }
 
 var reg = ['/reg']
 
 
 router.get('/' , function(req, res){
+	obj.msg = 'Welcome, Create your Umart Account';
 	res.render('authentication/login' , obj);
 });
 
@@ -50,13 +52,14 @@ router.get( '/reg' , function(req, res){
 	obj.nullVal = false;
 	obj.checkbox = '';
 	obj.msg = 'valid';
+	obj.regSuceess = 'other';
 	res.render('authentication/registration' , obj);
 });
 
 router.post( '/reg' , function(req, res){
 
-
-
+	obj.regSuceess = 'other';
+	obj.msg = 'valid';
 	var val =  req.body.email;
 
 	var emailPat = /[\D]+[a-zA-Z0-9]*@[a-zA-Z]{3,8}\.{1}[a-zA-Z]{2,3}/g;
@@ -94,6 +97,7 @@ router.post( '/reg' , function(req, res){
 			if(!status){
 			obj.regSuceess = false;
 			console.log('reg error');
+			res.render('authentication/registration' , obj);
 			}
 			else{
 				obj.regSuceess = true;
