@@ -5,10 +5,6 @@ var router = express.Router();
 
 
 
-var obj = {
-	title: 'dashboard' 
-
-}
 
 
 router.get('*', function(req, res, next){
@@ -19,23 +15,29 @@ router.get('*', function(req, res, next){
 		}
 });
 
+var obj = {
+	title: 'dashboard' ,
+	userinfo:  []
+}
 
 
 router.get('/' , function(req, res){
+	obj.userinfo = req.session.userinfo;
 	res.render('dashboard/dashboard' , obj);
 	console.log('in the dashboard');
-	console.log(req.session.userinfo);
 	// res.send('dashboard');
 
 })
 
 
 router.get('/profile' , function(req, res){
+	obj.userinfo = req.session.userinfo;
 	res.render('dashboard/profile' , obj);
 });
 
 
 router.get('/updateprofile' , function(req, res){
+	obj.userinfo = req.session.userinfo;
 	res.render('dashboard/updateprofile' , obj);
 });
 

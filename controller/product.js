@@ -7,23 +7,26 @@ var router = express.Router();
 var obj = {
 	title: 'add product' ,
 	msg: '',
-	promoArray: ['far' , 'faerf']
+	promoArray: ['far' , 'faerf'],
+	userinfo: []
 }
 
 
 
 router.get('/productdetails/:id' , function(req, res){
+	obj.userinfo = req.session.userinfo;
 	res.render('product/productdetails' , obj);
 });
 
 
 
 router.get('/addpromo' , function(req, res){
+	obj.userinfo = req.session.userinfo;
 	res.render('product/addpromo' , obj);
 });
 
 router.post('/addpromo' , function(req, res){
-
+	obj.userinfo = req.session.userinfo;
 	if(req.body.promo_desc == '' || req.body.promo_percentage == '' || req.body.promo_status == '' || req.body.promo_limit == '' || req.body.promot_use_count == '')
 	{
 		obj.msg = 'null';

@@ -9,7 +9,8 @@ var obj = {
 	msg:'Welcome, Create your Umart Account',
 	checkbox : '',
 	regSuceess: 'other',
-	nullVal : false
+	nullVal : false,
+	
 }
 
 var reg = ['/reg']
@@ -46,6 +47,9 @@ router.post('/' , function(req, res){
 			console.log(result[0].u_id);
 			obj.validCheck = true;
 			req.session.userinfo = result;
+			console.log('login session');
+			console.log(req.session.userinfo);
+			obj.userinfo = req.session.userinfo;
 			console.log('redirecting to dashboard');
 			res.redirect('/dashboard');
 		}
