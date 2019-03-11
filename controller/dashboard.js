@@ -7,6 +7,7 @@ var router = express.Router();
 
 var obj = {
 	title: 'dashboard' 
+
 }
 
 
@@ -22,6 +23,8 @@ router.get('*', function(req, res, next){
 
 router.get('/' , function(req, res){
 	res.render('dashboard/dashboard' , obj);
+	console.log('in the dashboard');
+	console.log(req.session.userinfo);
 	// res.send('dashboard');
 
 })

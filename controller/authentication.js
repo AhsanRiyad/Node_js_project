@@ -45,6 +45,7 @@ router.post('/' , function(req, res){
 			req.session.email = req.body.email;
 			console.log(result[0].u_id);
 			obj.validCheck = true;
+			req.session.userinfo = result;
 			console.log('redirecting to dashboard');
 			res.redirect('/dashboard');
 		}
