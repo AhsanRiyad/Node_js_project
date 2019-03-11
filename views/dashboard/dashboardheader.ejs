@@ -4,6 +4,10 @@
 
 <% 
 var logoSrc = "http://localhost:3000/lib/img/logo_dashboard.png";
+var addPromo = "http://localhost:3000/product/addpromo";
+var viewPromo = "http://localhost:3000/product/viewpromo";
+var signout = "http://localhost:3000/auth/logout";
+var homepage = "http://localhost:3000/";
 %>
 
 <!-- navigation bar and search bar starts -->
@@ -49,19 +53,19 @@ var logoSrc = "http://localhost:3000/lib/img/logo_dashboard.png";
         </div></a>
         
         
-        <a class="text-light" href=''>
+        <a class="text-light" href='<%=addPromo%>'>
           <div class="  
           py-2 text-center my-4 bg-secondary">
 
-          <i class="fas fa-shopping-cart"></i> Add Product
+          <i class="fas fa-shopping-cart"></i> Add Promo
 
         </div></a>
 
 
-        <a class="text-white" href="#">
+        <a class="text-white" href="<%=viewPromo%>">
           <div class="  bg-secondary py-2 text-center my-4">
 
-            <i class="fas w_f fa-envelope"></i> Message Request
+            <i class="fas w_f fa-envelope"></i> View Promo
 
           </div></a>
 
@@ -73,14 +77,14 @@ var logoSrc = "http://localhost:3000/lib/img/logo_dashboard.png";
 
             </div></a>
 
-          <a class="text-white" href=''>
+          <a class="text-white" href='<%=homepage%>'>
           <div class="bg-success py-2 text-center my-4">
 
             <i class="fas fa-shopping-cart"></i> Back to Shop Page
 
           </div></a>
 
-            <a class="text-white" href=''>
+            <a class="text-white" href='<%=signout%>'>
               <div class="  bg-danger py-2 text-center my-4">
 
                 <i class="fas fa-sign-out-alt"></i>Sign Out

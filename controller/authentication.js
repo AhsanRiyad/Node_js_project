@@ -15,7 +15,7 @@ var obj = {
 var reg = ['/reg']
 
 router.get('/logout' , function(req, res){
-	req.body.email = null;
+	req.session.email = null;
 	res.render('authentication/login' , obj);
 });
 
