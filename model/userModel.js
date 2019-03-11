@@ -33,7 +33,12 @@ module.exports={
 		db.execute(sql, callback);
 
 
-	}
+	},
+	updateprofile: function(user , callback){
+		var sql = "UPDATE `user` SET `u_password`= '"+user.password+"' ,`u_email`= '"+user.email+"' ,`u_mobile`= "+user.mobile+" WHERE u_id= "+user.u_id+"";
+		db.execute(sql , callback);
+	}	
+
 }
 
 

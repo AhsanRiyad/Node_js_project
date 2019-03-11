@@ -2,7 +2,7 @@ var express = require('express');
 
 
 var router = express.Router();
-
+var userModel = require.main.require('./model/userModel');
 
 
 
@@ -48,11 +48,28 @@ router.post('/updateprofile' , function(req, res){
 	var myinfoJson =  req.body.myinfo;
 	var myinfo = JSON.parse(myinfoJson);
 	console.log(myinfo);
-	var jsontest = {
+	var updateInfo = {
 		'name': 'riyad',
-		'msg' : 'profileUpdated'
+		'msg' : 'profileUpdated',
+		'user_id': obj.userinfo[0].u_id
 	}
-	res.json(jsontest);
+	myinfo.u_id = obj.userinfo[0].u_id;
+	console.log(myinfoJson);
+	//jsontest.user_id = obj.userinfo[0].u_id;
+	
+	userModel.updateprofile(myinfo , function(status){
+		if(status==true){
+			myinfo.status = true;
+			res.json(myinfo);
+			//res.json(JSON.parse(myinfoJson));
+			console.log('updated');
+		}
+		else{
+			console.log('failed');
+		}
+	});
+
+	
 
 	//res.render('dashboard/updateprofile' , obj);
 	
