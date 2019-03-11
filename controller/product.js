@@ -8,7 +8,7 @@ var obj = {
 	title: 'add product' ,
 	msg: '',
 	promoArray: ['far' , 'faerf'],
-	userinfo: []
+	userinfo: [{ last_name: 'Riyad' }]
 }
 
 
@@ -21,12 +21,22 @@ router.get('/productdetails/:id' , function(req, res){
 
 
 router.get('/addpromo' , function(req, res){
+
+	if(req.session.email == null){
+			res.redirect('/auth');
+	}
+
 	obj.userinfo = req.session.userinfo;
 	res.render('product/addpromo' , obj);
 });
 
 router.post('/addpromo' , function(req, res){
 	obj.userinfo = req.session.userinfo;
+
+	if(req.session.email == null){
+			res.redirect('/auth');
+	}
+
 	if(req.body.promo_desc == '' || req.body.promo_percentage == '' || req.body.promo_status == '' || req.body.promo_limit == '' || req.body.promot_use_count == '')
 	{
 		obj.msg = 'null';
@@ -40,12 +50,17 @@ router.post('/addpromo' , function(req, res){
 			promo_percentage : req.body.promo_percentage,
 			promo_status: req.body.promo_status,
 			promo_limit: req.body.promo_limit,
-			promo_use_count: req.body.promo_use_count
+			promo_use_count: req.body.promo_use_count,
+			user_id: req.session.userinfo[0].u_id,
+			promo_expiry: req.body.Promo_expiry
 		}
 
 		productModel.addPromo(promo , function(status){
 			if(status){
 				obj.msg = 'added';
+				console.log('add promo block ');
+				console.log(promo);
+
 				res.render('product/addpromo' , obj);
 			}
 			else{
@@ -63,6 +78,12 @@ router.post('/addpromo' , function(req, res){
 
 
 router.get('/viewpromo' , function(req, res){
+
+	if(req.session.email == null){
+			res.redirect('/auth');
+	}
+
+	obj.userinfo = req.session.userinfo;
 	productModel.getPromo(function(result){
 		console.log('view promo section');
 		console.log(result.length);
@@ -82,7 +103,7 @@ router.post('/deletepromo' , function(req, res){
 	console.log('delete promo');
 	
 	var promoid = req.body.promoIdDelete;
-
+	obj.userinfo = req.session.userinfo;
 	productModel.deletePromo(promoid , function(status){
 		
 		productModel.getPromo(function(result){
@@ -100,7 +121,11 @@ router.post('/deletepromo' , function(req, res){
 
 router.get('/updatepromo/:promoid' , function(req, res){
 	
+	if(req.session.email == null){
+			res.redirect('/auth');
+	}
 
+	obj.userinfo = req.session.userinfo;
 	var promoid = req.params.promoid;
 	console.log(promoid);
 	obj.promoid = promoid;
@@ -110,6 +135,7 @@ router.get('/updatepromo/:promoid' , function(req, res){
 
 
 router.post('/updatepromo/:promoid' , function(req, res){
+	obj.userinfo = req.session.userinfo;
 	obj.msg='';
 	var promoid = req.params.promoid;
 	console.log(promoid);
