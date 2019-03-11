@@ -5,7 +5,7 @@
 
 
 <form class="classFormAddProductBySeller" method='post' action='#'>
-	<h1 align="center" class="text-success">ADD Promo Code</h1>
+	<h1 align="center" class="text-primary">ADD Promo Code</h1>
 		
 		
 
@@ -24,6 +24,10 @@
 		<%}
 		else if (msg == 'db'){%>
 		<h1 align="center" class="text-danger"> DB problem </h1>
+
+		<%}
+		else if (msg == 'none'){%>
+		<h1 align="center" class="text-danger">  </h1>
 
 		<%}%>
 

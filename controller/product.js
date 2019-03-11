@@ -32,7 +32,7 @@ router.get('/addpromo' , function(req, res){
 
 router.post('/addpromo' , function(req, res){
 	obj.userinfo = req.session.userinfo;
-
+	obj.msg = 'none';
 	if(req.session.email == null){
 			res.redirect('/auth');
 	}
