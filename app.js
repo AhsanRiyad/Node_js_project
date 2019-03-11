@@ -26,7 +26,7 @@ app.set('view engine' , 'ejs');
 
 //MIDDLEWARES
 app.use(exSession({secret: 'my top secret code', saveUninitialized: true, resave: false}));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 
 app.use( authenticationArray , authentication);

@@ -41,7 +41,7 @@ console.log(profilePic);
 					</div>
 					<div class="col-9 align-self-center ml-0">
 						<p class="h3 ">
-							Riyad Ahsan
+							<%=userinfo[0].last_name%>
 
 
 						</p>
@@ -61,7 +61,7 @@ console.log(profilePic);
 					<div class="col-10 mt-3 border border-right-0 border-top-0 border-left-0 pl-0"> 
 						<small>Email</small>
 						<p class="pb-1 pl-1 mb-0">
-							demo@gmail.com
+							<%=userinfo[0].u_email%>
 						</p>
 
 					</div>
@@ -69,7 +69,7 @@ console.log(profilePic);
 					<div class="col-10 mt-3 border border-right-0 border-top-0 border-left-0 pl-0"> 
 						<small>Mobile</small>
 						<p class="pb-1 pl-1 mb-0">
-							01919448787
+							<%=userinfo[0].u_mobile%>
 						</p>
 
 					</div>
@@ -87,7 +87,7 @@ console.log(profilePic);
 
 
 					<div class="col-10 mx-0 px-0 ">
-						<a href=''><button class="btn btn-danger btn-block mb-3 mx-0 rounded-0">
+						<a href='http://localhost:3000/dashboard/updateprofile'><button class="btn btn-danger btn-block mb-3 mx-0 rounded-0">
 							Update Info
 						</button></a>
 					</div>

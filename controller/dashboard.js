@@ -39,7 +39,23 @@ router.get('/profile' , function(req, res){
 router.get('/updateprofile' , function(req, res){
 	obj.userinfo = req.session.userinfo;
 	res.render('dashboard/updateprofile' , obj);
+
 });
 
+router.post('/updateprofile' , function(req, res){
+	console.log('post update profile');
+	obj.userinfo = req.session.userinfo;
+	var myinfoJson =  req.body.myinfo;
+	var myinfo = JSON.parse(myinfoJson);
+	console.log(myinfo);
+	var jsontest = {
+		'name': 'riyad',
+		'msg' : 'profileUpdated'
+	}
+	res.json(jsontest);
+
+	//res.render('dashboard/updateprofile' , obj);
+	
+});
 
 module.exports = router;
