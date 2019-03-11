@@ -13,11 +13,31 @@ var obj = {
 
 
 
-router.get('/productdetails/:id' , function(req, res){
+router.get('/jsonp/:id' , function(req, res){
 	obj.userinfo = req.session.userinfo;
-	res.render('product/productdetails' , obj);
+	console.log('get block');
+	console.log(req.params.id);
+	
+
+	res.jsonp({ user: 'tobi' , riyad : 'ahsan' });
+	
 });
 
+router.post('/jsonp' , function(req, res){
+	obj.userinfo = req.session.userinfo;
+	console.log('post block');
+	res.json({ user: 'tobi' });
+	
+});
+
+
+
+
+/*router.get('/autosearch' , function(req, res){
+	obj.userinfo = req.session.userinfo;
+	console.log(req.params.term);
+	res.json();
+});*/
 
 
 router.get('/addpromo' , function(req, res){
