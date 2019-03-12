@@ -7,6 +7,8 @@ var dashboard = require.main.require('./controller/dashboard');
 var product = require.main.require('./controller/product');
 var productModel = require.main.require('./model/productModel');
 var authentication = require.main.require('./controller/authentication');
+var user = require.main.require('./controller/user');
+
 
 var app = express();
 var port = 3000;
@@ -34,6 +36,7 @@ app.use(cookieParser());
 app.use( authenticationArray , authentication);
 app.use('/dashboard' , dashboard);
 app.use('/product' , product);
+app.use('/user' , user);
 
 app.use('/lib/img', express.static(__dirname + '/lib/img/'));
 app.use('/lib/js', express.static( __dirname + '/lib/js/'));

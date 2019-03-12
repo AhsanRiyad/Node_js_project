@@ -37,6 +37,23 @@ module.exports={
 	updateprofile: function(user , callback){
 		var sql = "UPDATE `user` SET `u_password`= '"+user.password+"' ,`u_email`= '"+user.email+"' ,`u_mobile`= "+user.mobile+" WHERE u_id= "+user.u_id+"";
 		db.execute(sql , callback);
+	},
+	addUser: function(user , callback){
+
+		
+		var sql = "INSERT INTO `user`( `u_password`,  `u_email`, `u_mobile`, `u_status`, `u_type`, `last_name`) VALUES ('"+user.user_password+"','"+user.user_email+"',"+user.user_mobile+",'"+user.user_type+"','"+user.user_status+"', '"+user.user_name+"')" ; 
+
+
+
+		console.log(sql);
+
+		db.execute(sql , callback);
+
+
+
+	}, 
+	viewUser: function(){
+
 	}	
 
 }
