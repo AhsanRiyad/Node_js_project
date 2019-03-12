@@ -63,6 +63,18 @@ router.get('/autosearch/:id' , function(req, res){
 });
 
 
+router.get('/cart' , function(req, res){
+	// session
+	if(req.session.email){
+		obj.loginStatus = true;
+		}else{
+		obj.loginStatus = false;
+		}
+
+	res.render('product/cart' , obj);
+});
+
+
 router.get('/productdetails/:pid' , function(req, res){
 
 	
@@ -94,6 +106,7 @@ router.get('/productdetails/:pid' , function(req, res){
 	
 	console.log(req.headers);
 	console.log(ip);
+
 	var visitTable = {
 				ip: ip,
 				productid : pid

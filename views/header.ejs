@@ -65,7 +65,7 @@ var signout = "http://localhost:3000/auth/logout";
               if(loginStatus==false){ 
               %>
 
-              <a href="<%=signup%>" class="btn btn-success">Sign Up </span>
+              <a href="<%=signup%>" class="btn btn-success px-4">Sign Up </span>
               </a> 
               
               <%
@@ -73,7 +73,7 @@ var signout = "http://localhost:3000/auth/logout";
               else if(loginStatus==true){ 
               %>
 
-               <a href="<%=signup%>" class="btn btn-warning ">Cart<span class="badge badge-light">4</span>
+               <a href="http://localhost:3000/product/cart" class="btn btn-warning ">Cart<span class="badge badge-light">4</span>
               </a> 
 
               
@@ -86,7 +86,57 @@ var signout = "http://localhost:3000/auth/logout";
 
         </div>
 
-          <div class=" col-lg-2 col-xl-1 col-3 mt-3 mb-3 mb-lg-0 mt-lg-0 d-flex justify-content-center align-self-lg-center"><a href="<%=dashboard%>" class="btn btn-info">Dashboard</a></div>
+          <div class=" col-lg-2 col-xl-1 col-3 mt-3 mb-3 mb-lg-0 mt-lg-0 d-flex justify-content-center align-self-lg-center">
+
+
+          
+
+           
+
+
+        <%
+              if(loginStatus==false){ 
+              %>
+
+              <a href="http://localhost:3000/product/cart" class="btn btn-warning ">Cart<span class="badge badge-light">4</span>
+              </a> 
+              
+              <%
+              }
+              else if(loginStatus==true){ 
+              %>
+
+                <a href="<%=dashboard%>" class="btn btn-info">Dashboard</a>
+
+
+              
+              <%
+              }
+              %>
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+            
+
+            
+
+
+
+
+
+
+
+
 
 
           <div class=" col-lg-1 col-3 mt-3 mb-3 mb-lg-0 mt-lg-0 d-flex justify-content-center align-self-lg-center">
@@ -101,7 +151,7 @@ var signout = "http://localhost:3000/auth/logout";
               if(loginStatus==false){ 
               %>
 
-              <a href="<%=signin%>" class="btn btn-danger">
+              <a href="<%=signin%>" class="btn btn-danger px-4">
               Sign In
              
             </a>
@@ -111,8 +161,8 @@ var signout = "http://localhost:3000/auth/logout";
               else if(loginStatus==true){ 
               %>
 
-               <a href="<%=signin%>" class="btn btn-danger">
-              Support
+               <a href="http://localhost:3000/auth/logout" class="btn btn-danger">
+              SignOut
              
             </a>
 
