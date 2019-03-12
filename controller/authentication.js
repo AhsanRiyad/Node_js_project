@@ -10,22 +10,25 @@ var obj = {
 	checkbox : '',
 	regSuceess: 'other',
 	nullVal : false,
-	loginStatus: 'default'
-	
+	loginStatus: false
+		
 }
 
 var reg = ['/reg']
 
 router.get('/logout' , function(req, res){
 	req.session.email = null;
-	obj.loginStatus = 'false';
+	obj.loginStatus = false;
 	res.render('authentication/login' , obj);
 });
 
 
 
 router.get('/' , function(req, res){
+
+
 	obj.msg = 'Welcome, Create your Umart Account';
+	obj.loginStatus = false;
 	res.render('authentication/login' , obj);
 });
 
@@ -35,17 +38,24 @@ router.post('/' , function(req, res){
 		email: req.body.email,
 		password: req.body.password
 	};
-
+	// session
+	if(req.session.email){
+		obj.loginStatus = true;
+		}else{
+		obj.loginStatus = false;
+		}
+	
 	userModel.validate(user , function(result){
 		if(result.length<1){
-			obj.loginStatus = 'false';
+			obj.loginStatus = false;
 			console.log(result);
 			obj.validCheck = false;
 			res.render('authentication/login' , obj);
 		}
 		else{
-			obj.loginStatus = 'true';
+			
 			req.session.email = req.body.email;
+			obj.loginStatus = true;
 			console.log(result[0].u_id);
 			obj.validCheck = true;
 			req.session.userinfo = result;
@@ -67,13 +77,14 @@ router.post('/' , function(req, res){
 router.get( '/reg' , function(req, res){
 	obj.nullVal = false;
 	obj.checkbox = '';
+	obj.loginStatus = false;
 	obj.msg = 'Welcome, Create your Umart Account';
 	obj.regSuceess = 'other';
 	res.render('authentication/registration' , obj);
 });
 
 router.post( '/reg' , function(req, res){
-
+	obj.loginStatus = false;
 	obj.regSuceess = 'other';
 	obj.msg = 'Welcome, Create your Umart Account';
 	var val =  req.body.email;

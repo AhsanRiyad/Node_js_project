@@ -62,7 +62,7 @@ var signout = "http://localhost:3000/auth/logout";
             <div class="col-lg-1  col-3 offset-1 mt-3 mb-3 mb-lg-0 mt-lg-0 offset-lg-0 d-flex justify-content-center align-self-lg-center">
               
               <%
-              if(loginStatus=='dafault' || loginStatus=='false'){ 
+              if(loginStatus==false){ 
               %>
 
               <a href="<%=signup%>" class="btn btn-success">Sign Up </span>
@@ -70,10 +70,10 @@ var signout = "http://localhost:3000/auth/logout";
               
               <%
               }
-              else{ 
+              else if(loginStatus==true){ 
               %>
 
-               <a href="<%=signup%>" class="btn btn-warning">Cart<span class="badge badge-light">4</span>
+               <a href="<%=signup%>" class="btn btn-warning ">Cart<span class="badge badge-light">4</span>
               </a> 
 
               

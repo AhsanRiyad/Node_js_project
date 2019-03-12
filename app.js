@@ -50,10 +50,9 @@ app.get('/' , (req,res)=>{
 		console.log(result);
 
 		if(req.session.email){
-		title.loginStatus = 'true';
+		title.loginStatus = true;
 		}else{
-		title.loginStatus = 'false';
-
+		title.loginStatus = false;
 		}
 		res.render('index' , title);
 	});

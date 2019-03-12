@@ -9,16 +9,31 @@ var obj = {
 	msg: '',
 	promoArray: ['far' , 'faerf'],
 	userinfo: [{ last_name: 'Riyad' }],
-	loginStatus:'default'
+	loginStatus: false
 }
 
 
 
 router.get('/autosearch/:id' , function(req, res){
+
+
+
+
 	obj.userinfo = req.session.userinfo;
 	console.log('get block');
 	console.log(req.params.id);
 	
+
+	// session
+	if(req.session.email){
+		obj.loginStatus = true;
+		}else{
+		obj.loginStatus = false;
+		}
+
+
+
+
 	productModel.searchProduct(req.params.id , function(result){
 		if(result.length<1){
 			console.log('no result');
@@ -49,6 +64,15 @@ router.get('/autosearch/:id' , function(req, res){
 
 
 router.get('/productdetails/:pid' , function(req, res){
+
+	
+	// session
+	if(req.session.email){
+		obj.loginStatus = true;
+		}else{
+		obj.loginStatus = false;
+		}
+
 
 
 	var pid = req.params.pid;
@@ -89,6 +113,7 @@ router.get('/productdetails/:pid' , function(req, res){
 
 router.get('/addpromo' , function(req, res){
 
+	
 	if(req.session.email == null){
 		res.redirect('/auth');
 	}
@@ -189,6 +214,7 @@ router.post('/deletepromo' , function(req, res){
 router.get('/updatepromo/:promoid' , function(req, res){
 	
 	if(req.session.email == null){
+
 		res.redirect('/auth');
 	}
 
@@ -196,6 +222,7 @@ router.get('/updatepromo/:promoid' , function(req, res){
 	var promoid = req.params.promoid;
 	console.log(promoid);
 	obj.promoid = promoid;
+
 	res.render('product/updatepromo' , obj);
 
 });

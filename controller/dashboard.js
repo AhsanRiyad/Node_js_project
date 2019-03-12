@@ -17,7 +17,8 @@ router.get('*', function(req, res, next){
 
 var obj = {
 	title: 'dashboard' ,
-	userinfo:  []
+	userinfo:  [] , 
+	loginStatus : false
 }
 
 
