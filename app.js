@@ -16,7 +16,9 @@ var authenticationArray = ['/auth'];
 
 var title = {
 	title: 'index', 
-	justInProduct: []
+	justInProduct: [] , 
+	RecommendedProduct : []
+
 }
 
 //CONFIGURATION
@@ -44,6 +46,26 @@ app.use('/lib/css', express.static( __dirname + '/lib/css/'));
 //ROUTES
 app.get('/' , (req,res)=>{
 
+	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+	
+
+	productModel.getRecommendedProduct(ip , function(result){
+
+		if(result.length<1){
+			console.log('recommended not found');
+		}else{
+			console.log('recommended block');
+			console.log(result);
+			title.RecommendedProduct = result;
+		}
+
+		
+
+
+	});
+
+
 
 	productModel.getAllProduct(function(result){
 		title.justInProduct = result;
@@ -54,6 +76,7 @@ app.get('/' , (req,res)=>{
 		}else{
 		title.loginStatus = false;
 		}
+		console.log(title);
 		res.render('index' , title);
 	});
 

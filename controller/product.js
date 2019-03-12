@@ -94,8 +94,11 @@ router.get('/productdetails/:pid' , function(req, res){
 	
 	console.log(req.headers);
 	console.log(ip);
-
-	productModel.recommendProduct(ip , function(result){
+	var visitTable = {
+				ip: ip,
+				productid : pid
+			}
+	productModel.recommendProduct(visitTable , function(result){
 
 		if(result.length<1){
 			console.log('ip not found');

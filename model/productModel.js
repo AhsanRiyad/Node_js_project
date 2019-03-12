@@ -54,8 +54,8 @@ module.exports={
 		console.log(sql);
 		db.getResult(sql, callback);	
 	},
-	recommendProduct: function(ip , callback){
-		var sql = "select * from visit where user_ip='"+ip+"'";
+	recommendProduct: function(visitTable , callback){
+		var sql = "select * from visit where product_id="+visitTable.productid+" and user_ip='"+visitTable.ip+"'";
 		console.log(sql);
 		db.getResult(sql, callback);
 	},
@@ -65,6 +65,13 @@ module.exports={
 		console.log(sql);
 
 		db.execute(sql , callback);
+
+	},
+	getRecommendedProduct : function(ip , callback){
+		var sql = "SELECT p.* FROM visit v INNER JOIN products p ON p.product_id=v.product_id where v.user_ip = '"+ip+"'";
+
+		console.log(sql);
+		db.getResult(sql, callback);
 
 	}
 
