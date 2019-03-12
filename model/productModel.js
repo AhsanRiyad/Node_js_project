@@ -53,6 +53,19 @@ module.exports={
 		var sql = "select * from products where product_id = "+productid+"";
 		console.log(sql);
 		db.getResult(sql, callback);	
+	},
+	recommendProduct: function(ip , callback){
+		var sql = "select * from visit where user_ip='"+ip+"'";
+		console.log(sql);
+		db.getResult(sql, callback);
+	},
+	insertIp: function(ip , callback){
+		var sql = "INSERT INTO `visit`(`product_id`,`user_ip`) VALUES ("+ip.productid+" , '"+ip.ip+"')";
+
+		console.log(sql);
+
+		db.execute(sql , callback);
+
 	}
 
 }

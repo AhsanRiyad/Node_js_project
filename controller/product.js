@@ -66,12 +66,17 @@ router.get('/autosearch/:id' , function(req, res){
 router.get('/productdetails/:pid' , function(req, res){
 
 	
+	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
 	// session
 	if(req.session.email){
 		obj.loginStatus = true;
 		}else{
 		obj.loginStatus = false;
 		}
+
+
+
 
 
 
@@ -87,6 +92,35 @@ router.get('/productdetails/:pid' , function(req, res){
 
 	})
 	
+	console.log(req.headers);
+	console.log(ip);
+
+	productModel.recommendProduct(ip , function(result){
+
+		if(result.length<1){
+			console.log('ip not found');
+			console.log(result);
+			var visitTable = {
+				ip: ip,
+				productid : pid
+			}
+
+			productModel.insertIp(visitTable , function(status){
+				if(status){
+					console.log('ip added');
+
+				}
+				else{
+					console.log('ip not added');
+				}
+			});
+
+		}else{
+			console.log('ip found');
+		}
+
+
+	});
 	
 
 
@@ -113,7 +147,7 @@ router.get('/productdetails/:pid' , function(req, res){
 
 router.get('/addpromo' , function(req, res){
 
-	
+
 	if(req.session.email == null){
 		res.redirect('/auth');
 	}
