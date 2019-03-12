@@ -72,4 +72,24 @@ router.post('/addUser' , function(req, res){
 });
 
 
+
+router.get('/viewuser' , function(req, res){
+
+	if(req.session.email == null){
+		res.redirect('/auth');
+	}
+
+	obj.userinfo = req.session.userinfo;
+	userModel.viewUser(function(result){
+		console.log('view user section');
+		console.log(result.length);
+		obj.userArray = result;
+		console.log(obj.userArray);
+		res.render('user/viewuser' , obj);
+	});
+	
+});
+
+
+
 module.exports = router;

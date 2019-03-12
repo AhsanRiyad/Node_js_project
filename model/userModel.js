@@ -52,8 +52,11 @@ module.exports={
 
 
 	}, 
-	viewUser: function(){
-
+	viewUser: function(callback){
+		var sql = "select * from user";
+		console.log(sql);
+		//callback([]);
+		db.getResult(sql , callback);
 	}	
 
 }

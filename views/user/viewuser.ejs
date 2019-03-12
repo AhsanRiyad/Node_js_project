@@ -5,32 +5,36 @@
 
 <div class="row">
 	<div class="col-7 offset-3" style="margin-top: 100px;">
-		<h1 class="text-secondary text-center">Promo List</h1>
+		<h1 class="text-secondary text-center">user List</h1>
 	<table class="table">
   <thead class="thead-light">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Percentage</th>
-      <th scope="col">Limit</th>
-      <th scope="col">Delete</th>
-      <th scope="col">Update</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Type</th>
+      <th scope="col">Status</th>
+      <th scope="col">delete</th>
+      <th scope="col">update</th>
     </tr>
   </thead>
   <tbody>
     
 
-	<% for(var i=0; i< promoArray.length; i++) {%>	
+	<% for(var i=0; i< userArray.length; i++) {%>	
 
     <tr>
-      <th scope="row"> <%= promoArray[i].promo_id %> </th>
-      <td> <%= promoArray[i].promo_desc %> </td>
-      <td> <%= promoArray[i].promo_percentage %>% </td>
-      <td><%= promoArray[i].promo_limit %></td>
+      <th scope="row"> <%= userArray[i].u_id %> </th>
+      <td> <%= userArray[i].last_name %> </td>
+      <td> <%= userArray[i].u_mobile %> </td>
+      <td> <%= userArray[i].u_email %> </td>
+      <td><%= userArray[i].u_type %></td>
+      <td><%= userArray[i].u_status %></td>
       <td> 
-        <form action="http://localhost:3000/product/deletepromo" method="post"> 
+        <form action="http://localhost:3000/user/deleteuser" method="post"> 
         
-        <input type="text" name="promoIdDelete" hidden="true" value="<%= promoArray[i].promo_id %>">
+       <input type="text" name="userIdDelete" hidden="true" value="<%= userArray[i].user_id %>">
 
         <input type="submit" value="Delete" class="btn btn-danger">
 
@@ -40,7 +44,7 @@
 
       <td> 
 
-        <a class="btn btn-primary" href="http://localhost:3000/product/updatepromo/<%=promoArray[i].promo_id%>">Update</a>
+        <a class="btn btn-primary" href="http://localhost:3000/user/updateuser/<%=userArray[i].user_id%>">Update</a>
 
     </td>
 
