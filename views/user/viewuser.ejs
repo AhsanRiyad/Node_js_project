@@ -34,7 +34,7 @@
       <td> 
         <form action="http://localhost:3000/user/deleteuser" method="post"> 
         
-       <input type="text" name="userIdDelete" hidden="true" value="<%= userArray[i].user_id %>">
+       <input type="text" name="userIdDelete" hidden="true" value="<%= userArray[i].u_id %>">
 
         <input type="submit" value="Delete" class="btn btn-danger">
 
@@ -44,7 +44,7 @@
 
       <td> 
 
-        <a class="btn btn-primary" href="http://localhost:3000/user/updateuser/<%=userArray[i].user_id%>">Update</a>
+        <a class="btn btn-primary" href="http://localhost:3000/user/updateuser/<%=userArray[i].u_id%>">Update</a>
 
     </td>
 

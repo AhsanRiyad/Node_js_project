@@ -57,7 +57,32 @@ module.exports={
 		console.log(sql);
 		//callback([]);
 		db.getResult(sql , callback);
-	}	
+	},
+	deleteuser: function(userid , callback){
+		var sql = "DELETE FROM `user` WHERE u_id="+userid+"";
+		
+		console.log(sql);
+
+		db.execute(sql, callback);
+
+	},
+	updateuser: function(user , callback){
+
+		
+		/*var sql = "INSERT INTO `user`( `u_password`,  `u_email`, `u_mobile`, `u_status`, `u_type`, `last_name`) VALUES ('"+user.user_password+"','"+user.user_email+"',"+user.user_mobile+",'"+user.user_type+"','"+user.user_status+"', '"+user.user_name+"')" ; */
+
+
+		var sql =  "UPDATE `user` SET `u_password`='"+user.user_password+"',`u_email`='"+user.user_email+"',`u_mobile`="+user.user_mobile+",`u_status`='"+user.user_status+"',`u_type`='"+user.user_type+"',`last_name`='"+user.user_name+"' WHERE `u_id`="+user.user_id+"" ; 
+
+
+
+		console.log(sql);
+		//callback(false);
+		db.execute(sql , callback);
+
+
+
+	}, 
 
 }
 
