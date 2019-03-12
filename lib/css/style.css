@@ -5,6 +5,11 @@
 
 }
 
+ /*mouse clickable*/
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+       cursor: pointer;
+} 
+
 /*registration page msg show*/
 .new_class {
     color: white;
