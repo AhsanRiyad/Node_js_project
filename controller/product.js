@@ -47,7 +47,12 @@ router.get('/autosearch/:id' , function(req, res){
 });
 
 
+router.get('/productdetails/:id' , function(req, res){
 
+	
+	res.render('product/productdetails' , obj);
+
+});
 
 
 
