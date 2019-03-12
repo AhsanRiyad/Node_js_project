@@ -48,6 +48,13 @@ app.get('/' , (req,res)=>{
 	productModel.getAllProduct(function(result){
 		title.justInProduct = result;
 		console.log(result);
+
+		if(req.session.email){
+		title.loginStatus = 'true';
+		}else{
+		title.loginStatus = 'false';
+
+		}
 		res.render('index' , title);
 	});
 

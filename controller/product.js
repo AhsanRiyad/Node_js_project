@@ -8,7 +8,8 @@ var obj = {
 	title: 'add product' ,
 	msg: '',
 	promoArray: ['far' , 'faerf'],
-	userinfo: [{ last_name: 'Riyad' }]
+	userinfo: [{ last_name: 'Riyad' }],
+	loginStatus:'default'
 }
 
 
@@ -54,15 +55,26 @@ router.get('/productdetails/:pid' , function(req, res){
 	productModel.getProductDetails(pid , function(result){
 		console.log(result);
 		obj.product = result[0];
+		// console.log(result[0].product_name);
+		// console.log(obj);
+
+		console.log(obj.product.product_name);	
+		res.render('product/productdetails' , obj);	
 
 	})
 	
 	
 
-	console.log(pid);
+
+	/*console.log(pid);
 	console.log(obj);
 	console.log(obj.promoArray[0]);
-	//res.render('product/productdetails' , obj);
+
+	console.log('before');
+
+	console.log(obj.product.product_name);*/
+	// console.log(obj.product);
+	
 
 });
 

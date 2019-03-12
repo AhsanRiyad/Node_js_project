@@ -10,6 +10,7 @@ var obj = {
 	checkbox : '',
 	regSuceess: 'other',
 	nullVal : false,
+	loginStatus: 'default'
 	
 }
 
@@ -17,6 +18,7 @@ var reg = ['/reg']
 
 router.get('/logout' , function(req, res){
 	req.session.email = null;
+	obj.loginStatus = 'false';
 	res.render('authentication/login' , obj);
 });
 
@@ -36,12 +38,13 @@ router.post('/' , function(req, res){
 
 	userModel.validate(user , function(result){
 		if(result.length<1){
+			obj.loginStatus = 'false';
 			console.log(result);
 			obj.validCheck = false;
 			res.render('authentication/login' , obj);
 		}
 		else{
-
+			obj.loginStatus = 'true';
 			req.session.email = req.body.email;
 			console.log(result[0].u_id);
 			obj.validCheck = true;
