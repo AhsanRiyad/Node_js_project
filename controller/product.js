@@ -13,22 +13,40 @@ var obj = {
 
 
 
-router.get('/jsonp/:id' , function(req, res){
+router.get('/autosearch/:id' , function(req, res){
 	obj.userinfo = req.session.userinfo;
 	console.log('get block');
 	console.log(req.params.id);
 	
+	productModel.searchProduct(req.params.id , function(result){
+		if(result.length<1){
+			console.log('no result');
+			res.jsonp({ user: 'no match'  });
+		}else{
+			console.log('result found');
+			console.log(result);
 
-	res.jsonp({ user: 'tobi' , riyad : 'ahsan' });
+			var abc = {};
+			for(var i = 0 ; i<result.length; i++)
+			{
+				console.log(i);
+				console.log(result[i].product_name);
+				abc['product'+i] = result[i].product_name;
+			}
+
+
+			console.log(abc);
+
+			res.jsonp(abc);
+		}
+
+	});
+
+	
 	
 });
 
-router.post('/jsonp' , function(req, res){
-	obj.userinfo = req.session.userinfo;
-	console.log('post block');
-	res.json({ user: 'tobi' });
-	
-});
+
 
 
 
@@ -43,7 +61,7 @@ router.post('/jsonp' , function(req, res){
 router.get('/addpromo' , function(req, res){
 
 	if(req.session.email == null){
-			res.redirect('/auth');
+		res.redirect('/auth');
 	}
 
 	obj.userinfo = req.session.userinfo;
@@ -54,7 +72,7 @@ router.post('/addpromo' , function(req, res){
 	obj.userinfo = req.session.userinfo;
 	obj.msg = 'none';
 	if(req.session.email == null){
-			res.redirect('/auth');
+		res.redirect('/auth');
 	}
 
 	if(req.body.promo_desc == '' || req.body.promo_percentage == '' || req.body.promo_status == '' || req.body.promo_limit == '' || req.body.promot_use_count == '')
@@ -100,7 +118,7 @@ router.post('/addpromo' , function(req, res){
 router.get('/viewpromo' , function(req, res){
 
 	if(req.session.email == null){
-			res.redirect('/auth');
+		res.redirect('/auth');
 	}
 
 	obj.userinfo = req.session.userinfo;
@@ -127,12 +145,12 @@ router.post('/deletepromo' , function(req, res){
 	productModel.deletePromo(promoid , function(status){
 		
 		productModel.getPromo(function(result){
-		console.log('view promo section');
-		console.log(result.length);
-		obj.promoArray = result;
-		console.log(obj.promoArray);
-		res.render('product/viewpromo' , obj);
-	});
+			console.log('view promo section');
+			console.log(result.length);
+			obj.promoArray = result;
+			console.log(obj.promoArray);
+			res.render('product/viewpromo' , obj);
+		});
 
 	})
 
@@ -142,7 +160,7 @@ router.post('/deletepromo' , function(req, res){
 router.get('/updatepromo/:promoid' , function(req, res){
 	
 	if(req.session.email == null){
-			res.redirect('/auth');
+		res.redirect('/auth');
 	}
 
 	obj.userinfo = req.session.userinfo;
