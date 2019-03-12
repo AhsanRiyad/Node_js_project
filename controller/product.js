@@ -47,10 +47,22 @@ router.get('/autosearch/:id' , function(req, res){
 });
 
 
-router.get('/productdetails/:id' , function(req, res){
+router.get('/productdetails/:pid' , function(req, res){
 
+
+	var pid = req.params.pid;
+	productModel.getProductDetails(pid , function(result){
+		console.log(result);
+		obj.product = result[0];
+
+	})
 	
-	res.render('product/productdetails' , obj);
+	
+
+	console.log(pid);
+	console.log(obj);
+	console.log(obj.promoArray[0]);
+	//res.render('product/productdetails' , obj);
 
 });
 

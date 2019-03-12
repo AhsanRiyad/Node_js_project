@@ -47,6 +47,12 @@ module.exports={
 
 		db.getResult(sql, callback);
 
+	},
+	getProductDetails: function(productid, callback){
+		console.log(productid);
+		var sql = "select * from products where product_id = "+productid+"";
+		console.log(sql);
+		db.getResult(sql, callback);	
 	}
 
 }

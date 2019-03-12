@@ -22,7 +22,6 @@ router.get('/logout' , function(req, res){
 
 
 
-
 router.get('/' , function(req, res){
 	obj.msg = 'Welcome, Create your Umart Account';
 	res.render('authentication/login' , obj);
