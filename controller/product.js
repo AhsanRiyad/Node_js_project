@@ -17,8 +17,6 @@ var obj = {
 router.get('/autosearch/:id' , function(req, res){
 
 
-
-
 	obj.userinfo = req.session.userinfo;
 	console.log('get block');
 	console.log(req.params.id);
@@ -26,6 +24,7 @@ router.get('/autosearch/:id' , function(req, res){
 
 	// session
 	if(req.session.email){
+		obj.userinfo = req.session.userinfo;
 		obj.loginStatus = true;
 		}else{
 		obj.loginStatus = false;
@@ -140,8 +139,21 @@ router.get('/productdetails/:pid' , function(req, res){
 		obj.product = result[0];
 		// console.log(result[0].product_name);
 		// console.log(obj);
+		obj.user_id_P = '';
 
 		console.log(obj.product.product_name);	
+		if(req.session.userinfo){
+			obj.user_id = req.session.userinfo;
+			console.log(obj.user_id[0].u_id);
+			obj.user_id_P = obj.user_id[0].u_id;
+
+		}
+		
+		
+
+				console.log(obj);
+		
+
 		res.render('product/productdetails' , obj);	
 
 	})
@@ -308,7 +320,7 @@ router.get('/updatepromo/:promoid' , function(req, res){
 	if(req.session.email == null){
 
 		res.redirect('/auth');
-	}
+	}else{
 
 	obj.userinfo = req.session.userinfo;
 	var promoid = req.params.promoid;
@@ -316,6 +328,7 @@ router.get('/updatepromo/:promoid' , function(req, res){
 	obj.promoid = promoid;
 
 	res.render('product/updatepromo' , obj);
+}
 
 });
 
@@ -359,5 +372,26 @@ router.post('/updatepromo/:promoid' , function(req, res){
 
 	
 });
+
+
+
+router.post('/addtocart' , function(req , res){
+	console.log('add to cart');
+
+	
+
+	var myinfoJson =  req.body.myinfo;
+	var myinfo = JSON.parse(myinfoJson);
+	console.log(myinfo);
+
+	productModel.addToCart(myinfo , function(status){
+		
+	});
+
+	res.json('processing');
+
+
+});
+
 
 module.exports = router;

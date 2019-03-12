@@ -82,6 +82,14 @@ module.exports={
 		console.log(sql);
 		db.getResult(sql, callback);
 
+	},
+	addToCart: function(info , callback){
+		console.log('in the model');
+		var sql = "INSERT INTO `cart`(  `user_id`,  `product_id` , `quantity`) VALUES ("+info.uid+","+info.pid+" , "+info.qntity+" ) where user_id not in ("+info.uid+") and product_id ("+info.pid+")";
+
+		console.log(sql);
+
+		console.log(info);
 	}
 
 }
