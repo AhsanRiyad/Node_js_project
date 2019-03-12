@@ -90,10 +90,41 @@ var signout = "http://localhost:3000/auth/logout";
 
 
           <div class=" col-lg-1 col-3 mt-3 mb-3 mb-lg-0 mt-lg-0 d-flex justify-content-center align-self-lg-center">
-            <a href="<%=signin%>" class="btn btn-danger">
+            
+
+
+            
+
+            
+
+          <%
+              if(loginStatus==false){ 
+              %>
+
+              <a href="<%=signin%>" class="btn btn-danger">
               Sign In
              
             </a>
+              
+              <%
+              }
+              else if(loginStatus==true){ 
+              %>
+
+               <a href="<%=signin%>" class="btn btn-danger">
+              Support
+             
+            </a>
+
+              
+              <%
+              }
+              %>
+
+
+
+
+
           </div>
 
 
