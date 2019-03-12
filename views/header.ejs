@@ -42,19 +42,27 @@ var signout = "http://localhost:3000/auth/logout";
 
             <div class="col-lg-6 col-12 align-self-lg-center">
 
-              <form action="search_result.php">
+              <form action="http://localhost:3000/product/search" method="GET">
                 <div class="form-row align-items-center">
                   <div class="col-9">
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="fas fa-search"></i></div>
+                        <div class="input-group-text"><i class="fas fa-search"></i>
+
+
+                        </div>
                       </div>
-                      <input type="text" class="form-control" id="autosearch" placeholder="Search">
+                      
+                
+                      <input type="text" class="form-control" id="autosearch" placeholder="Search" name="searchbox">
                     </div>
                   </div>
 
                   <div class="col-3">
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn btn-primary" name="submit">Search</button>
+              
+
+
                   </div>
                 </div>
               </form> 

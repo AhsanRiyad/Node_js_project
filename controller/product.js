@@ -9,7 +9,7 @@ var obj = {
 	msg: '',
 	promoArray: ['far' , 'faerf'],
 	userinfo: [{ last_name: 'Riyad' }],
-	loginStatus: false
+	loginStatus: false,
 }
 
 
@@ -60,6 +60,48 @@ router.get('/autosearch/:id' , function(req, res){
 
 	
 	
+});
+
+
+router.get('/search' , function(req , res){
+
+	
+		console.log('parameters');
+	var searchQuery = req.query.searchbox;
+	console.log(req.query.searchbox);
+
+	/*productModel.searchPage(searchQuery , function(result){
+		if(result.length<1){
+
+		}else{
+			obj.searchProductList = result;
+			console.log(result);
+			console.log('search page');
+			res.render('product/productSearch' , obj);
+		}
+	});*/
+	
+	productModel.searchPage(searchQuery , function(result){
+
+		if(result.length<1){
+			console.log(result);
+		}
+		else{
+			console.log(result);
+			obj.searchResult = result;
+			console.log(obj);
+			res.render('product/productSearch' , obj);
+		}
+
+		
+	});
+	
+
+
+
+	//res.render('product/productSearch' , obj);
+
+
 });
 
 

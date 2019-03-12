@@ -48,6 +48,15 @@ module.exports={
 		db.getResult(sql, callback);
 
 	},
+	searchPage: function(productname , callback){
+		console.log('search model '+ productname);
+		var pname = productname + '%' ; 
+		var sql = "select * from products where product_name like '"+pname+"' ";
+		console.log(sql);
+
+		db.getResult(sql, callback);
+
+	},
 	getProductDetails: function(productid, callback){
 		console.log(productid);
 		var sql = "select * from products where product_id = "+productid+"";
